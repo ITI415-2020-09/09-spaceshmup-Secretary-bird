@@ -13,7 +13,7 @@ public enum WeaponType
     blaster, // A simple blaster
     spread, // Two shots simultaneously
     phaser, // [NI] Shots that move in waves
-    missile, // [NI] Homing missiles
+    flamethrower, // [NI] Large but short ranged AOE damage
     laser, // [NI] Damage over time
     shield // Raise shieldLevel
 }
@@ -122,13 +122,22 @@ public class Weapon : MonoBehaviour {
                 break;
 
             case WeaponType.spread:
-                p = MakeProjectile(); // Make middle Projectile
+                p = MakeProjectile(); 
                 p.rigid.velocity = vel;
-                p = MakeProjectile(); // Make right Projectile
-                p.transform.rotation = Quaternion.AngleAxis(10, Vector3.back);
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(Random.Range(-15,15), Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
-                p = MakeProjectile(); // Make left Projectile
-                p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
+                p = MakeProjectile(); 
+                p.transform.rotation = Quaternion.AngleAxis(Random.Range(-15, 15), Vector3.back);
+                p.rigid.velocity = p.transform.rotation * vel;
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(Random.Range(-15, 15), Vector3.back);
+                p.rigid.velocity = p.transform.rotation * vel;
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(Random.Range(-15, 15), Vector3.back);
+                p.rigid.velocity = p.transform.rotation * vel;
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(Random.Range(-15, 15), Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
                 break;
         }
