@@ -140,6 +140,18 @@ public class Weapon : MonoBehaviour {
                 p.transform.rotation = Quaternion.AngleAxis(Random.Range(-15, 15), Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
                 break;
+
+            case WeaponType.flamethrower:
+                p = MakeProjectile();
+                p.transform.rotation = Quaternion.AngleAxis(Random.Range(-7, 7), Vector3.back);
+                p.rigid.velocity = p.transform.rotation * vel;
+                Destroy(p, 0.3f);
+                break;
+
+            case WeaponType.laser:
+                p = MakeProjectile();
+                p.rigid.velocity = vel;
+                break;
         }
     }
 
