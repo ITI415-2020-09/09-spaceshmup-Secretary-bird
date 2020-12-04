@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 54420238815504536}
   - component: {fileID: -750174587241086075}
   m_Layer: 10
-  m_Name: LazerHero
+  m_Name: LaserHero
   m_TagString: ProjectileHero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899541879965282}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 10}

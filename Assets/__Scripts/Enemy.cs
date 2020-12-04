@@ -107,6 +107,40 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        GameObject otherGO = other.gameObject;
+        switch (otherGO.tag)
+        {
+            case "ProjectileHero":
+                Projectile p = otherGO.GetComponent<Projectile>();
+                if (!bndCheck.isOnScreen)
+                {
+                    Destroy(otherGO);
+                    break;
+                }
+                ShowDamage();
+                // Get the damage amount from the Main WEAP_DICT
+                health -= Main.GetWeaponDefinition(p.type).continuousDamage;
+                if (health <= 0)
+                {
+                    // Tell the Main singleton that this ship was destroyed
+                    if (!notifiedOfDestruction)
+                    {
+                        Main.S.ShipDestroyed(this);
+                    }
+                    notifiedOfDestruction = true;
+                    // Destroy this enemy
+                    Destroy(this.gameObject);
+                }
+                break;
+
+            default:
+                print("Enemy hit by non-DOTHero: " + otherGO.name);
+                break;
+        }
+    }
+
     void ShowDamage()
     {
         foreach (Material m in materials)

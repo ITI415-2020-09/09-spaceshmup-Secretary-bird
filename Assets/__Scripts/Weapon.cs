@@ -143,9 +143,9 @@ public class Weapon : MonoBehaviour {
 
             case WeaponType.flamethrower:
                 p = MakeProjectile();
-                p.transform.rotation = Quaternion.AngleAxis(Random.Range(-7, 7), Vector3.back);
+                p.transform.rotation = Quaternion.AngleAxis(Random.Range(-30, 30), Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
-                Destroy(p, 0.3f);
+                Destroy(p.gameObject, 1);
                 break;
 
             case WeaponType.laser:
